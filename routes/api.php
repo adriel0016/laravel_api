@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('Auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -24,7 +24,7 @@ Route::group(['middleware'  =>  'cors'], function () {
     Route::post('login', 'v1\Auth\AuthenticateController@authenticate');
     Route::resource('posts', PostsController::class);
 
-    Route::group(['middleware' => 'jwt.Auth'], function () {
+    Route::group(['middleware' => 'jwt.auth'], function () {
 
     });
 });
