@@ -1,6 +1,6 @@
 @script = <<SCRIPT
 APP_ENV="Development"
-DOCUMENT_ROOT_ZEND="/var/www/html"
+
 apt-get update
 apt-get install -y language-pack-en-base
 apt-get install -y software-properties-common
@@ -40,16 +40,16 @@ sudo apt-get -y install mysql-server
 
 echo "
 <VirtualHost *:80>
-    ServerName skeleton-zf.local
-    DocumentRoot $DOCUMENT_ROOT_ZEND
-    <Directory $DOCUMENT_ROOT_ZEND>
-        DirectoryIndex index.php
-        AllowOverride All
-        Order allow,deny
-        Allow from all
-    </Directory>
+        DocumentRoot /var/www/html/public
+        ServerName son.laravel
+        ServerAlias *.son.laravel
+        <Directory "/var/www/html">
+                Options Indexes FollowSymLinks Includes ExecCGI
+                AllowOverride All
+                Require all granted
+        </Directory>
 </VirtualHost>
-" > /etc/apache2/sites-available/application-zf.conf
+" > /etc/apache2/sites-available/application-laravel.conf
 
 echo "
 #
@@ -188,7 +188,7 @@ a2enmod headers
 a2dismod php5
 a2enmod php7.2
 a2dissite 000-default
-a2ensite application-zf
+a2ensite application-laravel
 apt-get remove -y apache2
 apt-get install -y apache2
 service apache2 restart
