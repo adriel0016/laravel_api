@@ -17,9 +17,13 @@ class DatabaseSeeder extends Seeder
 
         DB::statement("SET foreign_key_checks = 0");
 
-        \App\User::truncate();
+        \App\Business\Entities\User::truncate();
+        \App\Business\Entities\PDVCategoriaItem::truncate();
+        \App\Business\Entities\PDVItem::truncate();
 
         $this->call(UserTableSeeder::class);
+        $this->call(PDVCategoriaItemTableSeeder::class);
+        $this->call(PDVItemTableSeeder::class);
 
         Model::reguard();
     }

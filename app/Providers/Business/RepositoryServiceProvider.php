@@ -24,6 +24,8 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(\App\Business\Repositories\PostRepository::class, \App\Business\Repositories\PostRepositoryEloquent::class);
+        $this->app->bind(\App\Business\Repositories\PDVCategoriaItemRepository::class, \App\Business\Repositories\PDVCategoriaItemRepositoryEloquent::class);
+        $this->app->bind(\App\Business\Repositories\PDVItemRepository::class, \App\Business\Repositories\PDVItemRepositoryEloquent::class);
         //:end-bindings:
     }
 }

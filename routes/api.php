@@ -1,6 +1,7 @@
 <?php
 
-use App\Business\Controllers\Api\v1\Auth\AuthenticateController;
+
+use App\Business\Controllers\Api\v1\PDV\PDVCategoriaItemsController;
 use App\Business\Controllers\PostsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,8 +22,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware'  =>  'cors'], function () {
-    Route::post('login', 'Api\v1\Auth\AuthenticateController@authenticate');
+    Route::post('login', 'App\Business\Controllers\Api\v1\Auth\AuthenticateController@authenticate');
     Route::resource('posts', PostsController::class);
+
+    Route::resource('categoriaitens', PDVCategoriaItemsController::class);
 
     Route::group(['middleware' => 'jwt.auth'], function () {
 
