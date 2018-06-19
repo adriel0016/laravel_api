@@ -161,7 +161,6 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
 
     ],
