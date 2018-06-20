@@ -15,5 +15,11 @@ class UserTableSeeder extends Seeder
             'name'      =>      'Adriel Oliveira',
             'email'     =>      'adriel_oliveira_almeida@hotmail.com',
         ]);
+
+
+        factory(\App\User::class)->create([
+            'name'      =>      'Rafael Franco',
+            'email'     =>      'rafael@joyaweb.com.br',
+        ]);
     }
 }
