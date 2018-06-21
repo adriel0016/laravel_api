@@ -2,6 +2,9 @@
 
 namespace App\Providers\Business;
 
+
+use App\Business\Repositories\Generic\EntidadeRepository;
+use App\Business\Repositories\Generic\EntidadeRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -23,7 +26,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(\App\Business\Repositories\PostRepository::class, \App\Business\Repositories\PostRepositoryEloquent::class);
-        //:end-bindings:
+        $this->app->bind(EntidadeRepository::class, EntidadeRepositoryEloquent::class);
+
     }
 }

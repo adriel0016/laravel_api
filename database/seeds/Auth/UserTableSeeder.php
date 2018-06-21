@@ -11,13 +11,13 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\User::class)->create([
+        factory(\App\Business\Models\Auth\User::class)->create([
             'name'      =>      'Adriel Oliveira',
             'email'     =>      'adriel_oliveira_almeida@hotmail.com',
         ]);
 
 
-        factory(\App\User::class)->create([
+        factory(\App\Business\Models\Auth\User::class)->create([
             'name'      =>      'Rafael Franco',
             'email'     =>      'rafael@joyaweb.com.br',
         ]);

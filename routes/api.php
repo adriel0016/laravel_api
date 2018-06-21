@@ -1,7 +1,7 @@
 <?php
 
 use App\Business\Controllers\Api\v1\Auth\AuthenticateController;
-use App\Business\Controllers\PostsController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,8 +21,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware'  =>  'cors'], function () {
-    Route::post('login', 'Api\v1\Auth\AuthenticateController@authenticate');
-    Route::resource('posts', PostsController::class);
+    Route::group(['prefix'=>'v1','as'=>'v1.'], function () {
+        Route::post('login', 'Api\v1\Auth\AuthenticateController@authenticate');
+        Route::resource('entidades', 'Api\v1\Generic\EntidadesController');
+    });
+
+
 
     Route::group(['middleware' => 'jwt.auth'], function () {
 
